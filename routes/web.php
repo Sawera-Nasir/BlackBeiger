@@ -118,4 +118,4 @@ Route::get('/heels',[HeelsController::class,'index']);
 Route::get('/khussa',[KhussaController::class,'index']);
 Route::get('/new-arrivals',[NewArrivalsController::class,'index']);
 Route::get('/view-all',[ViewAllController::class,'index']);
-// Route::get('/get-collection/{collectionId}',[CategoryController::class,'getCollecitonData'])->name('get.collection');
+Route::get('/get-collection/{collectionId}',[CategoryController::class,'getCollecitonData'])->name('get.collection');
