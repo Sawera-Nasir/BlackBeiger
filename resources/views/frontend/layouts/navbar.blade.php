@@ -38,7 +38,19 @@
         <span class="fa fa-bars"></span> Menu
       </button>
 
-      @if (getCategories()->isNotEmpty())
+
+    <div class="collapse navbar-collapse" id="ftco-nav">
+        <ul class="navbar-nav m-auto">
+            @if (getCategories()->isNotEmpty())
+                @foreach(getCategories() as $category)
+                    <li class="nav-item">
+                        <a href="{{ url('/get-collection/' . $category->slug) }}" class="nav-link">{{ $category->name }}</a>
+                    </li>
+                @endforeach
+            @endif
+        </ul>
+    </div>
+      {{-- @if (getCategories()->isNotEmpty())
       @foreach(getCategories() as $category)
       <div class="collapse navbar-collapse" id="ftco-nav">
         <ul class="navbar-nav m-auto">
@@ -48,7 +60,7 @@
         </ul>
       </div>
       @endforeach
-      @endif
+      @endif --}}
 
 
       

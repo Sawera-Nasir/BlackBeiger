@@ -28,30 +28,36 @@
 			<a class="navbar-brand" href="{{url('/')}}">&#151&#151   Collections   &#151&#151</a>
         </div>
 	</div>
-    <div class="collections">
+	<div class="collections">
+		@foreach ($categories as $category)
+			@if($category->showImage == 'Yes')
+				<div class="collection-item">
+					<img src="{{ asset($category->image) }}" alt="{{ $category->name }}">
+					<div class="collection-label">{{ $category->name }}</div>
+				</div>
+			@endif
+		@endforeach
+	</div>
+    {{-- <div class="collections">
 		<div class="collection-item">
             <img src="{{url('frontend/images/image1.webp')}}" alt="Heels">
-			{{-- <img class="image-hover" src="{{url('frontend/images/image1-hover.webp')}}" alt="Heels Hover"> --}}
             <div class="collection-label">Heels</div>
         </div>
         <div class="collection-item">
             <img src="{{url('frontend/images/image2.webp')}}" alt="Flats">
-			{{-- <img class="image-hover" src="{{url('frontend/images/image2-hover.webp')}}" alt="Flats Hover"> --}}
             <div class="collection-label">Flats</div>
         </div>
         <div class="collection-item">
             <img src="{{url('frontend/images/image 3.webp')}}" alt="Khussa">
-			{{-- <img class="image-hover" src="{{url('frontend/images/image3-hover.webp')}}" alt="Khussa Hover"> --}}
             <div class="collection-label">Khussa</div>
         </div>
         <div class="collection-item">
             <img src="{{url('frontend/images/image4.webp')}}" alt="Black Lovers">
-			{{-- <img class="image-hover" src="{{url('frontend/images/image4-hover.webp')}}" alt="Black Lovers Hover"> --}}
             <div class="collection-label">Black Lovers</div>
         </div>
 	</br>
 </br>
-    </div>
+    </div> --}}
 </br>
 	<div class="TRENDING-title">
 		<div class="col-md-12 text-center">

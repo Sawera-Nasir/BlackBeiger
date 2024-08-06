@@ -46,9 +46,9 @@ class ProductController extends Controller
             'sizes.*' => 'in:36,37,38,39,40,41,42',
         ];
 
-        if ($request->hasFile('image')) {
-            $data['image'] = Helper::handleImageUpload($request->file('image'));
-        }
+        // if ($request->hasFile('image')) {
+        //     $data['image'] = Helper::handleImageUpload($request->file('image'));
+        // }
 
             if(!empty($request->track_qty) && $request->track_qty == 'Yes'){
                 $rules['qty'] = 'required|numeric';
@@ -73,6 +73,11 @@ class ProductController extends Controller
             $product->sizes = implode(',', $request->sizes);
             $product->category_id = $request->category_id;
             $product->is_featured = $request->is_featured;
+            if ($request->hasFile('image')) {
+                $imageName = time() . '.' . $request->image->extension();
+                $request->image->move(public_path('images/product'), $imageName);
+                $product->image = 'images/product/' . $imageName;
+            }
             $product->save();
 
 
@@ -128,9 +133,9 @@ class ProductController extends Controller
             'sizes.*' => 'in:36,37,38,39,40,41,42',
         ];
 
-            if ($request->hasFile('image')) {
-                $data['image'] = Helper::handleImageUpload($request->file('image'));
-            }
+            // if ($request->hasFile('image')) {
+            //     $data['image'] = Helper::handleImageUpload($request->file('image'));
+            // }
 
             if(!empty($request->track_qty) && $request->track_qty == 'Yes'){
                 $rules['qty'] = 'required|numeric';
@@ -154,6 +159,11 @@ class ProductController extends Controller
             $product->sizes = implode(',', $request->sizes);
             $product->category_id = $request->category_id;
             $product->is_featured = $request->is_featured;
+            if ($request->hasFile('image')) {
+                $imageName = time() . '.' . $request->image->extension();
+                $request->image->move(public_path('images/product'), $imageName);
+                $product->image = 'images/product/' . $imageName;
+            }
             $product->save();
 
 

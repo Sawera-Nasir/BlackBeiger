@@ -62,12 +62,7 @@
                             @endphp
                             <tr>
                                 <td>{{$product->id}}</td>
-                                <td>
-                                    @if ($product->image)
-                                        <img src="{{ url('/storage/products/' . $product->image) }}" alt="Product Image" style="max-width: 100px; max-height: 100px;">
-                                    @else
-                                        No Image
-                                    @endif
+                                <td><img src="{{ asset($product->image) }}" alt="Image" width="100"></td>
 
                                     {{-- will display image 
                                     @if (!empty($productImage->image))
@@ -75,7 +70,8 @@
                                     @else
                                     <img src="{{asset('admin-assets/img/default-150x150.png')}}" class="img-thumbnail" width="50" />
                                     @endif--}}
-                                </td>
+
+
                                 <td>{{$product->title}}</a></td>
                                 <td>{{$product->price}}</td>
                                 <td>{{$product->qty}} left in Stock</td>

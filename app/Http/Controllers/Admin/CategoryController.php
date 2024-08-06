@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Category;
+// use App\Models\Product;
+
 
 class CategoryController extends Controller
 {
@@ -185,7 +187,26 @@ class CategoryController extends Controller
             'message' => 'Category deleted successfully'
         ]);
     }
-    public function getCollecitonData ($collectionId) {
-        // dd($collectionId);
+    // public function getCollecitonData ($collectionId) {
+    //     // dd($collectionId);
+    //     $category = Category::findOrFail($collectionId);
+    //     // Assuming you have a 'products' relation in the Category model
+    //     $products = $category->products()->get();
+
+    //     return view('categories.collection', compact('category', 'products'));
+    // }
+
+    public function getCollectionData($slug)
+    {
+        $category = Category::where('slug', $slug)->firstOrFail();
+        $products = $category->products()->get();
+
+        $view = $slug; // Assuming your view names are based on slugs
+
+        if (view()->exists('frontend.' . $view)) {
+            return view('frontend.' . $view, compact('category', 'products'));
+        }
+
+        abort(404); // If the view does not exist, throw a 404 error
     }
 }    

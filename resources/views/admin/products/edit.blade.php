@@ -82,7 +82,7 @@
                                     <div class="col-md-12">
                                         <div class="mb-3">
                                             <label for="image">Image</label></br>
-                                            <input type="file" id="image" name="image">
+                                            <input type="file" id="image" name="image"  class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -284,9 +284,10 @@
     
     $("#productForm").submit(function(event){
         // event.preventDefault();
-        var formElement = $(this)[0]; // Get the form element
-        var formData = new FormData(formElement); // Create a new FormData object from the form element       
+        var formElement = $(this);  // Get the form element
         $("button[type='submit']").prop('disabled',true)
+        const formData = new FormData(formElement[0]);  // Use formElement variable here
+
         $.ajax({
             url: '{{route("products.update",$product->id)}}',
             type: "put",
