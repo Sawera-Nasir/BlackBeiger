@@ -107,6 +107,10 @@
                                                 To show a reduced price, move the product’s original price into Compare at price. Enter a lower value into Price.
                                             </p>	
                                         </div>
+                                        <div class="mb-3">
+                                            <label for="discount">Discount (%)</label>
+                                            <input type="number" name="discount" id="discount" class="form-control" placeholder="Discount percentage">
+                                        </div>
                                     </div>                                            
                                 </div>
                             </div>	                                                                      
