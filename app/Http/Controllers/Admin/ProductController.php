@@ -218,4 +218,8 @@ class ProductController extends Controller
         ]);        
     }
 
+    private function test(){
+        dd("Hello");
+    }
+
 }
