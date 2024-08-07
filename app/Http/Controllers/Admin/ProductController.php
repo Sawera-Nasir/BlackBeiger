@@ -238,9 +238,4 @@ class ProductController extends Controller
         ]);        
     }
 
-    private function test(){
-        $test = "Hello";
-        dd($test);
-    }
-
 }

@@ -353,7 +353,6 @@
         </a>
     </div>
 	</br>
-	<div></div>
 	<div class="features-container">
 		<div class="feature">
 			<i class="fa fa-truck"></i>
