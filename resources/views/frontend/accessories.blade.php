@@ -1,7 +1,7 @@
 @extends('frontend.layouts.main')
 @section('content')
 @extends('frontend.layouts.navbar')
-sjdfgsjd
+
 </br>
     </br>
     <div class="accessories-card-container">
