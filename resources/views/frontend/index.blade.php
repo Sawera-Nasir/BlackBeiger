@@ -38,34 +38,31 @@
 			@endif
 		@endforeach
 	</div>
-    {{-- <div class="collections">
-		<div class="collection-item">
-            <img src="{{url('frontend/images/image1.webp')}}" alt="Heels">
-            <div class="collection-label">Heels</div>
-        </div>
-        <div class="collection-item">
-            <img src="{{url('frontend/images/image2.webp')}}" alt="Flats">
-            <div class="collection-label">Flats</div>
-        </div>
-        <div class="collection-item">
-            <img src="{{url('frontend/images/image 3.webp')}}" alt="Khussa">
-            <div class="collection-label">Khussa</div>
-        </div>
-        <div class="collection-item">
-            <img src="{{url('frontend/images/image4.webp')}}" alt="Black Lovers">
-            <div class="collection-label">Black Lovers</div>
-        </div>
-	</br>
-</br>
-    </div> --}}
 </br>
 	<div class="TRENDING-title">
 		<div class="col-md-12 text-center">
 			<a class="navbar-brand" href="{{url('/')}}">&#151&#151   TRENDING   &#151&#151 </br><p style="font: 1em sans-serif;font-size: x-small;">Top view in this week</p></a>
         </div>
 	</div>
-
 	<div class="TRENDING-container">
+    @foreach ($trendingProducts as $product)
+        <div class="TRENDING-card">
+            <img src="{{ url($product->image) }}" alt="{{ $product->title }}">
+            @if($product->discount)
+                <div class="discount">-{{ $product->discount }}%</div>
+            @endif
+            <div class="name">{{ $product->title }}</div>
+            <div class="prices">
+                @if($product->discount)
+                    <span class="original-price">Rs.{{ number_format($product->price * (1 + $product->discount / 100), 2) }}</span>
+                @endif
+                <span> Rs.{{ number_format($product->price, 2) }}</span>
+            </div>
+        </div>
+    @endforeach
+</div>
+
+	{{-- <div class="TRENDING-container">
         <div class="TRENDING-card">
             <img src="{{url('frontend/images/crystal-flower.webp')}}" alt="Crystal Flower">
             <div class="discount">-30%</div>
@@ -138,9 +135,10 @@
 				<span class="original-price">Rs.4,580.00</span>
 				<span> Rs.2,860.00</span>
 			</div>
-		</div>
-				
-    </div>
+		</div>		
+    </div> --}}
+
+
 	<div class="load-more-container">
 		<button class="load-more-button">Load More</button>
 	</div>

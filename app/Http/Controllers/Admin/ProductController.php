@@ -64,12 +64,14 @@ class ProductController extends Controller
             $product->description = $request->description;
             $product->image = $request->image;
             $product->price = $request->price;
-            $product->compare_price = $request->price;
+            $product->compare_price = $request->compare_price;
+            $product->discount = $request->discount;
             $product->sku = $request->sku;
             $product->barcode = $request->barcode;
             $product->track_qty = $request->track_qty;
             $product->qty = $request->qty;
             $product->status = $request->status;
+            $product->productSection = $request->productSection;
             $product->sizes = implode(',', $request->sizes);
             $product->category_id = $request->category_id;
             $product->is_featured = $request->is_featured;
@@ -78,7 +80,16 @@ class ProductController extends Controller
                 $request->image->move(public_path('images/product'), $imageName);
                 $product->image = 'images/product/' . $imageName;
             }
+
+            // Calculate discount if compare_price is provided
+            if ($request->filled('compare_price') && $request->compare_price > $request->price) {
+                $data['discount'] = round((($request->compare_price - $request->price) / $request->compare_price) * 100, 2);
+            } else {
+                $data['discount'] = 0;
+            }
+
             $product->save();
+
 
 
             session()->flash('success','Product added successfully');
@@ -117,7 +128,6 @@ class ProductController extends Controller
 
 
     public function update($id, Request $request){
-
         $product = Product::find($id);
 
         $rules = [
@@ -150,12 +160,14 @@ class ProductController extends Controller
             $product->description = $request->description;
             $product->image = $request->image;
             $product->price = $request->price;
-            $product->compare_price = $request->price;
+            $product->compare_price = $request->compare_price;
+            $product->discount = $request->discount;
             $product->sku = $request->sku;
             $product->barcode = $request->barcode;
             $product->track_qty = $request->track_qty;
             $product->qty = $request->qty;
             $product->status = $request->status;
+            $product->productSection = $request->productSection;
             $product->sizes = implode(',', $request->sizes);
             $product->category_id = $request->category_id;
             $product->is_featured = $request->is_featured;
@@ -164,6 +176,14 @@ class ProductController extends Controller
                 $request->image->move(public_path('images/product'), $imageName);
                 $product->image = 'images/product/' . $imageName;
             }
+
+            // Calculate discount if compare_price is provided
+            if ($request->filled('compare_price') && $request->compare_price > $request->price) {
+                $data['discount'] = round((($request->compare_price - $request->price) / $request->compare_price) * 100, 2);
+            } else {
+                $data['discount'] = 0;
+            }
+
             $product->save();
 
 

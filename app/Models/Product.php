@@ -8,8 +8,29 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model       
 {
     use HasFactory;
-    
-    // public function product_image(){
-    //     return $this->hasMany(ProductImage::class);
-    // }
+    protected $fillable = [
+        'title',
+        'slug',
+        'description',
+        'image',
+        'price',
+        'compare_price',
+        'discount',
+        'sku',
+        'barcode',
+        'track_qty',
+        'qty',
+        'status',
+        'productSection',
+        'is_featured',
+    ];
+    public function getComparePriceAttribute($value)
+    {
+        if ($this->discount) {
+            return $this->price + ($this->price * $this->discount / 100);
+        }
+
+        return $value;
+    }
+
 }
