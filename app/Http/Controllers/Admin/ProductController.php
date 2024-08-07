@@ -239,7 +239,8 @@ class ProductController extends Controller
     }
 
     private function test(){
-        dd("Hello");
+        $test = "Hello";
+        dd($test);
     }
 
 }
