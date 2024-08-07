@@ -48,19 +48,6 @@
                                 </div>
                             </div>	                                                                      
                         </div>
-                        {{-- <div class="card mb-3">
-                            <div class="card-body">
-                                <h2 class="h4 mb-3">Media</h2>								
-                                <div id="image" class="dropzone dz-clickable">
-                                    <div class="dz-message needsclick">    
-                                        <br>Drop files here or click to upload.<br><br>                                            
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row" id="product-gallery">
-                            
-                        </div> --}}
                         <div class="card mb-3">
                             <div class="card-body">
                                 <h2 class="h4 mb-3">Media</h2>
@@ -143,6 +130,24 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="card">
+                            <div class="col-mb-3">
+                                <div class="card-body">
+                                    <h2 class="h4  mb-3">Product Section</h2>
+                                    <div class="mb-3">
+                                        <label for="productSection">Section</label>
+                                        <select name="productSection" id="productSection" class="form-control">
+                                            <option value="None">None</option>
+                                            <option value="Trending">Trending</option>
+                                            <option value="Trending Products">Trending Products</option>
+                                            <option value="Heels">Heels</option>
+                                            <option value="Flats">Flats</option>
+                                            <option value="Khussa">Khussa</option>
+                                        </select> 
+                                    </div>       
+                                </div>
+                            </div>
+                        </div>    
                         <div class="card mb-3">
                             <div class="card-body">
                                 <h2 class="h4 mb-3">Sizes</h2>
@@ -283,54 +288,6 @@
             }
         });            
     });
-
-    
-    // $("#productForm").submit(function(event){
-    //     event.preventDefault();
-    //     var formElement = $(this); // Get the form element
-    //     // var formData = new FormData(formElement); // Create a new FormData object from the form element
-    //     $("button[type='submit']").prop('disabled',true)
-    //     const formData = new FormData(element.get(0));
-    //     $.ajax({
-    //         url: '{{route("products.store")}}',
-    //         type: "post",
-    //         data: formData,
-    //         processData: false, // Prevent jQuery from automatically transforming the data into a query string
-    //         contentType: false, // Prevent jQuery from setting the Content-Type request header
-    //         dataType: 'json',
-    //         success: function (response) {
-    //             $("button[type='submit']").prop('disabled',false)
-    //             if (response['status'] == true) {
-
-    //                 $(".error").removeClass('invalid-feedback').html('');
-    //                 $("input[type='text'], select, input[type='number']").removeClass('is-invalid');
-
-    //                 window.location.href = '{{route("products.index")}}';
-                    
-    //             }else{
-    //                 var errors = response['errors'];
-
-    //                 $(".error").removeClass('invalid-feedback').html('');
-    //                 $("input[type='text'], select, input[type='number']").removeClass('is-invalid');
-
-    //                 $.each(errors, function(key,value){
-    //                     $(`#${key}`).addClass('is-invalid')
-    //                     .siblings('p')
-    //                     .addClass('invalid-feedback')
-    //                     .html(value);
-    //                 });
-
-    //             }
-                              
-    //         },
-    //         error: function(){
-    //             console.log("Something Went Wrong");
-    //         }
-    //     });            
-
-    // });
-
-
 
 </script>
     

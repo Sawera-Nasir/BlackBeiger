@@ -157,6 +157,24 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="card">
+                            <div class="col-mb-3">
+                                <div class="card-body">
+                                    <h2 class="h4  mb-3">Product Section</h2>
+                                    <div class="mb-3">
+                                        <label for="productSection">Section</label>
+                                        <select name="productSection" id="productSection" class="form-control">
+                                            <option value="None">None</option>
+                                            <option value="Trending">Trending</option>
+                                            <option value="Trending Products">Trending Products</option>
+                                            <option value="Heels">Heels</option>
+                                            <option value="Flats">Flats</option>
+                                            <option value="Khussa">Khussa</option>
+                                        </select> 
+                                    </div>       
+                                </div>
+                            </div>
+                        </div>
                         <div class="card mb-3">
                             <div class="card-body">
                                 <h2 class="h4 mb-3">Sizes</h2>
