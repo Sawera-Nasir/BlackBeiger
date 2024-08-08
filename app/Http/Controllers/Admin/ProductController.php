@@ -218,16 +218,7 @@ class ProductController extends Controller
         if ($product->image) {
             \Storage::disk('public')->delete($product->image);
         }
-        // $productImages = ProductImage::where('product_id',$id)->get();
-        // if(!empty($productImages)){
-        //     foreach ($productImages as $productImage) {
-        //         File::delete(public_path('uploads/product/large/'.$productImage->image));
-        //         File::delete(public_path('uploads/product/small/'.$productImage->image));
-        //     }
 
-        //     ProductImage::where('product_id',$id)->delete();
-
-        // }
         $product->delete();
 
         $request->session()->flash('success','Product deleted successfully');
@@ -237,5 +228,4 @@ class ProductController extends Controller
             'message' => 'Product deleted successfully'
         ]);        
     }
-
 }
