@@ -5,7 +5,7 @@
     </br>
 
 </br>
-<div class="New-card-container">
+{{-- <div class="New-card-container">
     @foreach($products as $product)
         <div class="New-card">
             <div class="New-card-image">
@@ -29,6 +29,29 @@
                 </div>
             </div>
         </div>
+    @endforeach
+</div> --}}
+
+<div class="New-card-container">
+    @foreach ($products as $product)
+    <div class="New-card">
+        <img src="{{ url('images/product/' . $product->image) }}" alt="{{ $product->title }}">
+        @if ($product->discount)
+            <div class="discount">-{{ $product->discount }}%</div>
+        @endif
+        <div class="name">{{ $product->title }}</div>
+        <div class="prices">
+            @if ($product->compare_price && $product->price < $product->compare_price)
+                <span class="original-price">Rs.{{ number_format($product->compare_price, 2) }}</span>
+            @endif
+            <span> Rs.{{ number_format($product->price, 2) }}</span>
+        </div>
+        <div class="sizes">
+            @foreach ($product->sizes as $size)
+                <span>{{ $size->name }}</span>
+            @endforeach
+        </div>
+    </div>
     @endforeach
 </div>
 

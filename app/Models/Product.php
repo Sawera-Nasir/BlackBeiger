@@ -33,4 +33,17 @@ class Product extends Model
         return $value;
     }
 
+
+     // Define the relationship with the Category model
+     public function category()
+     {
+         return $this->belongsTo(Category::class, 'category_id');
+     }
+ 
+     // Define the relationship with the Size model (if applicable)
+     public function sizes()
+     {
+         return $this->belongsToMany(Size::class);
+     }
+
 }

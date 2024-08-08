@@ -198,15 +198,22 @@ class CategoryController extends Controller
 
     public function getCollectionData($slug)
     {
+        // Find the category by slug
         $category = Category::where('slug', $slug)->firstOrFail();
-        $products = $category->products()->get();
-
-        $view = $slug; // Assuming your view names are based on slugs
-
-        if (view()->exists('frontend.' . $view)) {
-            return view('frontend.' . $view, compact('category', 'products'));
+    
+        // Ensure the relationship 'products' exists in your Category model
+        // Get all products associated with this category
+        $products = $category->products()->with('sizes')->get();
+    
+        // Use the slug as the view name
+        $view = 'frontend.' . $slug;
+    
+        // Check if the view exists
+        if (view()->exists($view)) {
+            return view($view, compact('category', 'products'));
         }
-
-        abort(404); // If the view does not exist, throw a 404 error
+    
+        // If the view does not exist, throw a 404 error
+        abort(404);
     }
 }    

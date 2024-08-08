@@ -17,6 +17,6 @@ class HeelsController extends Controller
         // Get all products that belong to the 'heels' category
         $products = $heelsCategory->products()->with('sizes')->get();
 
-        return view('frontend.index', compact('products'));
+        return view('frontend.heels', compact('products'));
     }
 }
