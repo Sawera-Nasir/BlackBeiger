@@ -60,85 +60,7 @@
             </div>
         </div>
     @endforeach
-</div>
-
-	{{-- <div class="TRENDING-container">
-        <div class="TRENDING-card">
-            <img src="{{url('frontend/images/crystal-flower.webp')}}" alt="Crystal Flower">
-            <div class="discount">-30%</div>
-            <div class="name">CRYSTAL FLOWER</div>
-            <div class="prices">
-                <span class="original-price">Rs.4,000.00</span>
-                <span> Rs.2,800.00</span>
-            </div>
-        </div>
-        <div class="TRENDING-card">
-            <img src="{{url('frontend/images/hazel.webp')}}" alt="Hazel">
-            <div class="discount">-41%</div>
-            <div class="name">Hazel</div>
-            <div class="prices">
-                <span class="original-price">Rs.4,900.00</span>
-                <span> Rs.2,915.00</span>
-            </div>
-        </div>
-        <div class="TRENDING-card">
-            <img src="{{url('frontend/images/croc-textured.webp')}}" alt="Croc Textured">
-            <div class="discount">-40%</div>
-            <div class="name">Croc Textured</div>
-            <div class="prices">
-                <span class="original-price">Rs.4,200.00</span>
-                <span> Rs.2,525.00</span>
-            </div>
-        </div>
-	
-		<div class="TRENDING-card">
-			<img src="{{url('frontend/images/estelle.webp')}}" alt="Estelle">
-			<div class="discount">-41%</div>
-			<div class="name">ESTELLE</div>
-			<div class="prices">
-				<span class="original-price">Rs.4,200.00</span>
-				<span> Rs.2,463.00</span>
-			</div>
-		</div>
-		<div class="TRENDING-card">
-			<img src="{{url('frontend/images/marie.webp')}}" alt="Marie - Brown">
-			<div class="discount">-33%</div>
-			<div class="name">MARIE - BROWN</div>
-			<div class="prices">
-				<span class="original-price">Rs.2,345.00</span>
-				<span> Rs.2,390.00</span>
-			</div>
-		</div>
-		<div class="TRENDING-card">
-			<img src="{{url('frontend/images/croc-textured-black.webp')}}" alt="Croc Textured - Black">
-			<div class="discount">-40%</div>
-			<div class="name">Croc Textured - Black</div>
-			<div class="prices">
-				<span class="original-price">Rs.4,200.00</span>
-				<span> Rs.2,525.00</span>
-			</div>
-		</div>
-		<div class="TRENDING-card">
-			<img src="{{url('frontend/images/daisy-hot-pink.webp')}}" alt="DAISY - HOT PINK">
-			<div class="discount">-38%</div>
-			<div class="name">DAISY - HOT PINK</div>
-			<div class="prices">
-				<span class="original-price">Rs.4,990.00</span>
-				<span> Rs.3,070.00</span>
-			</div>
-		</div>
-		<div class="TRENDING-card">
-			<img src="{{url('frontend/images/azure-black.webp')}}" alt="AZURE - BLACK">
-			<div class="discount">-38%</div>
-			<div class="name">AZURE - BLACK</div>
-			<div class="prices">
-				<span class="original-price">Rs.4,580.00</span>
-				<span> Rs.2,860.00</span>
-			</div>
-		</div>		
-    </div> --}}
-
-
+	</div>
 	<div class="load-more-container">
 		<button class="load-more-button">Load More</button>
 	</div>
@@ -149,44 +71,24 @@
         </div>
 	</div>
 	<div class="product-container">
+		@foreach ($trendingProductsSection as $product)
 		<div class="product-card">
-            <img src="{{url('frontend/images/RAINBOW.webp')}}" alt="RAINBOW">
-            <div class="discount">-43%</div>
-            <div class="name">RAINBOW</div>
-            <div class="prices">
-                <span class="original-price">Rs.4,500.00</span>
-                <span> Rs.2,585.00</span>
-            </div>
-        </div>
-		<div class="product-card">
-            <img src="{{url('frontend/images/Transparent Strap.webp')}}" alt="Transparent Strap">
-            <div class="discount">-36%</div>
-            <div class="name">Transparent Strap</div>
-            <div class="prices">
-                <span class="original-price">Rs.3,800.00</span>
-                <span> Rs.2,440.00</span>
-            </div>
-        </div>
-		<div class="product-card">
-            <img src="{{url('frontend/images/Ancly 3.0.webp')}}" alt="Ancly 3.0">
-            <div class="discount">-48%</div>
-            <div class="name">Ancly 3.0</div>
-            <div class="prices">
-                <span class="original-price">Rs.4,500.00</span>
-                <span> Rs.2,345.00</span>
-            </div>
-        </div>
-		<div class="product-card">
-            <img src="{{url('frontend/images/ZEBRA (LIMITED STOCK).webp')}}" alt="ZEBRA (LIMITED STOCK)">
-            <div class="discount">-42%</div>
-            <div class="name">ZEBRA (LIMITED STOCK)</div>
-            <div class="prices">
-                <span class="original-price">Rs.4,600.00</span>
-                <span> Rs.2,690.00</span>
-            </div>
-        </div>
-		
+			<img src="{{ url($product->image) }}" alt="{{ $product->title }}">
+			@if ($product->discount)
+				<div class="discount">-{{ $product->discount }}%</div>
+			@endif
+			<div class="name">{{ $product->title }}</div>
+			<div class="prices">
+				@if ($product->compare_price && $product->price < $product->compare_price)
+					<span class="original-price">Rs.{{ number_format($product->compare_price, 2) }}</span>
+				@endif
+				<span> Rs.{{ number_format($product->price, 2) }}</span>
+			</div>
+		</div>
+		@endforeach
 	</div>
+
+
 	</br>
 
 	<div class="Heels-title">
@@ -195,43 +97,23 @@
         </div>
 	</div>
 	<div class="Heels-container">
-		<div class="Heels-card">
-            <img src="{{url('frontend/images/RAINBOW.webp')}}" alt="RAINBOW">
-            <div class="discount">-43%</div>
-            <div class="name">RAINBOW</div>
-            <div class="prices">
-                <span class="original-price">Rs.4,500.00</span>
-                <span> Rs.2,585.00</span>
-            </div>
-        </div>
-		<div class="Heels-card">
-            <img src="{{url('frontend/images/Plenty.webp')}}" alt="Plenty">
-            <div class="discount">-30%</div>
-            <div class="name">Plenty</div>
-            <div class="prices">
-                <span class="original-price">Rs.4,000.00</span>
-                <span> Rs.2,799.00</span>
-            </div>
-        </div>
-		<div class="Heels-card">
-            <img src="{{url('frontend/images/BRONZE.webp')}}" alt="BRONZE">
-            <div class="discount">-46%</div>
-            <div class="name">BRONZE</div>
-            <div class="prices">
-                <span class="original-price">Rs.5,990.00</span>
-                <span> Rs.3,250.00</span>
-            </div>
-        </div>
-		<div class="Heels-card">
-            <img src="{{url('frontend/images/PARIS.webp')}}" alt="PARIS">
-            <div class="discount">-45%</div>
-            <div class="name">PARIS</div>
-            <div class="prices">
-                <span class="original-price">Rs.5,990.00</span>
-                <span> Rs.3,285.00</span>
-            </div>
-        </div>
+		@foreach ($HeelsSection as $product)
+		<div class="product-card">
+			<img src="{{ url($product->image) }}" alt="{{ $product->title }}">
+			@if ($product->discount)
+				<div class="discount">-{{ $product->discount }}%</div>
+			@endif
+			<div class="name">{{ $product->title }}</div>
+			<div class="prices">
+				@if ($product->compare_price && $product->price < $product->compare_price)
+					<span class="original-price">Rs.{{ number_format($product->compare_price, 2) }}</span>
+				@endif
+				<span> Rs.{{ number_format($product->price, 2) }}</span>
+			</div>
+		</div>
+		@endforeach
 	</div>
+
 </br>
 
 	<div class="FLATS-title">
@@ -240,43 +122,23 @@
 		</div>
 	</div>
 	<div class="FLATS-container">
-		<div class="FLATS-card">
-			<img src="{{url('frontend/images/CHIC MULES.webp')}}" alt="CHIC MULES">
-			<div class="discount">-43%</div>
-			<div class="name">CHIC MULES</div>
+		@foreach ($FlatsSection as $product)
+		<div class="product-card">
+			<img src="{{ url($product->image) }}" alt="{{ $product->title }}">
+			@if ($product->discount)
+				<div class="discount">-{{ $product->discount }}%</div>
+			@endif
+			<div class="name">{{ $product->title }}</div>
 			<div class="prices">
-				<span class="original-price">Rs.4,100.00 </span>
-				<span> Rs.2,325.00</span>
+				@if ($product->compare_price && $product->price < $product->compare_price)
+					<span class="original-price">Rs.{{ number_format($product->compare_price, 2) }}</span>
+				@endif
+				<span> Rs.{{ number_format($product->price, 2) }}</span>
 			</div>
 		</div>
-		<div class="FLATS-card">
-			<img src="{{url('frontend/images/RACHEL.webp')}}" alt="RACHEL">
-			<div class="discount">-42%</div>
-			<div class="name">RACHEL</div>
-			<div class="prices">
-				<span class="original-price">Rs.4,150.00</span>
-				<span> Rs.2,415.00</span>
-			</div>
-		</div>
-		<div class="FLATS-card">
-			<img src="{{url('frontend/images/RINGS.webp')}}" alt="RINGS">
-			<div class="discount">-51%</div>
-			<div class="name">RINGS</div>
-			<div class="prices">
-				<span class="original-price">Rs.4,505.00</span>
-				<span> Rs.2,210.00</span>
-			</div>
-		</div>
-		<div class="FLATS-card">
-			<img src="{{url('frontend/images/Greeny Pump.webp')}}" alt="Greeny Pump">
-			<div class="discount">-30%</div>
-			<div class="name">Greeny Pump</div>
-			<div class="prices">
-				<span class="original-price">Rs.3,800.00</span>
-				<span> Rs.2,644.00</span>
-			</div>
-		</div>
+		@endforeach
 	</div>
+
 	</br>
 
 	<div class="KHUSSA-title">
@@ -285,6 +147,25 @@
 		</div>
 	</div>
 	<div class="KHUSSA-container">
+		@foreach ($KhussaSection as $product)
+		<div class="product-card">
+			<img src="{{ url($product->image) }}" alt="{{ $product->title }}">
+			@if ($product->discount)
+				<div class="discount">-{{ $product->discount }}%</div>
+			@endif
+			<div class="name">{{ $product->title }}</div>
+			<div class="prices">
+				@if ($product->compare_price && $product->price < $product->compare_price)
+					<span class="original-price">Rs.{{ number_format($product->compare_price, 2) }}</span>
+				@endif
+				<span> Rs.{{ number_format($product->price, 2) }}</span>
+			</div>
+		</div>
+		@endforeach
+	</div>
+
+
+	{{-- <div class="KHUSSA-container">
 		<div class="KHUSSA-card">
 			<img src="{{url('frontend/images/Ample (light brown).webp')}}" alt="Ample (light brown)">
 			<div class="discount">-58%</div>
@@ -321,7 +202,7 @@
 				<span> Rs.2,150.00</span>
 			</div>
 		</div>
-	</div>
+	</div> --}}
 </br>
 
 	<div class="Follow-title">

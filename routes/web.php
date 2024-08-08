@@ -109,6 +109,8 @@ Route::group(['prefix' => 'admin'],function(){
 Route::get('/',[IndexController::class,'index'])->name('frontend.index');
 Route::get('/get-collection/{slug}', [CategoryController::class, 'getCollectionData'])->name('get.collection');
 
+
+
 Route::get('/black-lovers',[BlackLoversController::class,'index']);
 Route::get('/everyday-value',[EverydayValueController::class,'index']);
 Route::get('/celebrity-closet',[CelebrityClosetController::class,'index']);
