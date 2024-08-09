@@ -9022,6 +9022,16 @@ h1, h2, h3, h4, h5,
   z-index: 99999;
 }
 
+#cartButton {
+  position: absolute;
+  top: 20px;
+  right: 50px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+
 
 
 

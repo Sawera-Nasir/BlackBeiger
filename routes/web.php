@@ -125,6 +125,6 @@ Route::get('/khussa',[KhussaController::class,'index']);
 Route::get('/new-arrivals',[NewArrivalsController::class,'index']);
 Route::get('/view-all',[ViewAllController::class,'index']);
 Route::get('/get-collection/{collectionId}',[CategoryController::class,'getCollecitonData'])->name('get.collection');
-Route::get('/cart', [CartController::class, 'index']);
+Route::get('/carts', [CartController::class, 'index']);
 Route::get('/checkout', [CheckoutController::class, 'showCheckout'])->name('checkout.show');
 
