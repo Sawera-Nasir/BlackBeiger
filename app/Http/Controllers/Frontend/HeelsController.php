@@ -15,7 +15,7 @@ class HeelsController extends Controller
         $heelsCategory = Category::where('slug', 'heels')->firstOrFail();
 
         // Get all products that belong to the 'heels' category
-        $products = $heelsCategory->products()->with('sizes')->get();
+        $products = $heelsCategory->products()->get();
 
         return view('frontend.heels', compact('products'));
     }

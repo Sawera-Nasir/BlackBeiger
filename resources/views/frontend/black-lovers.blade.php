@@ -4,9 +4,40 @@
 
     </br>
 
-</br>
-
     <div class="New-card-container">
+        @foreach ($products as $product)
+        <div class="New-card">
+            <div class="New-card-image">
+                <img src="{{ url($product->image) }}" alt="{{ $product->title }}">
+                @if ($product->discount)
+                    <div class="New-discount">-{{ $product->discount }}%</div>
+                @endif
+            </div>
+            <div class="New-card-content">
+                <h3>{{ $product->title }}</h3>
+                <div class="prices">
+                    @if ($product->compare_price && $product->price < $product->compare_price)
+                        <span class="original-price">Rs.{{ number_format($product->compare_price, 2) }}</span>
+                    @endif
+                    <span> Rs.{{ number_format($product->price, 2) }}</span>
+                </div>
+                <div class="New-sizes">
+                    @php
+                        $sizesArray = explode(',', $product['sizes'])
+                    @endphp
+                    @if(!empty($sizesArray))
+                        @foreach ($sizesArray as $size)
+                            <span>{{ $size }}</span>
+                        @endforeach
+                    @endif
+                </div>
+            </div>
+        </div>
+        @endforeach
+    </div> 
+
+
+    {{-- <div class="New-card-container">
         <div class="New-card">
             <div class="New-card-image">
                 <img src="{{url('frontend/images/estelle.webp')}}" alt="ESTELLE">
@@ -271,12 +302,8 @@
                 </div>
             </div>
         </div>
-   </div>
+   </div> --}}
          
-
-
-
-</br>
 </br>
 
 
