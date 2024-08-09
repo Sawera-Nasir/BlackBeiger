@@ -1,11 +1,6 @@
 @extends('frontend.layouts.main')
 @section('content')
 @extends('frontend.layouts.navbar')
-
-    </br>
-    </br>
-
-
     <div class="New-card-container">
         <div class="New-card">
             <div class="New-card-image">
@@ -286,5 +281,5 @@
         </a>
     </div>
 
-
+@endsection
 

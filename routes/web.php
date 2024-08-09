@@ -115,15 +115,15 @@ Route::get('/get-collection/{slug}', [CategoryController::class, 'getCollectionD
 
 
 
-Route::get('/black-lovers',[BlackLoversController::class,'index']);
-Route::get('/everyday-value',[EverydayValueController::class,'index']);
-Route::get('/celebrity-closet',[CelebrityClosetController::class,'index']);
+Route::get('/black-lovers',[BlackLoversController::class,'index'])->name('frontend.black-lovers');
+Route::get('/everyday-value',[EverydayValueController::class,'index'])->name('frontend.everyday-value');
+Route::get('/celebrity-closet',[CelebrityClosetController::class,'index'])->name('frontend.celebrity-closet');
 Route::get('/accessories',[AccessoriesController::class,'index']);
-Route::get('/flats',[FlatsController::class,'index']);
-Route::get('/heels',[HeelsController::class,'index']);
-Route::get('/khussa',[KhussaController::class,'index']);
-Route::get('/new-arrivals',[NewArrivalsController::class,'index']);
-Route::get('/view-all',[ViewAllController::class,'index']);
+Route::get('/flats',[FlatsController::class,'index'])->name('frontend.flats');
+Route::get('/heels',[HeelsController::class,'index'])->name('frontend.heels');
+Route::get('/khussa',[KhussaController::class,'index'])->name('frontend.khussa');
+Route::get('/new-arrivals',[NewArrivalsController::class,'index'])->name('frontend.new-arrivals');
+// Route::get('/view-all',[ViewAllController::class,'index'])->name('frontend.view-all');
 Route::get('/get-collection/{collectionId}',[CategoryController::class,'getCollecitonData'])->name('get.collection');
 Route::get('/carts', [CartController::class, 'index']);
 Route::get('/checkout', [CheckoutController::class, 'showCheckout'])->name('checkout.show');
