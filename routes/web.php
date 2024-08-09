@@ -23,6 +23,8 @@ use App\Http\Controllers\Frontend\KhussaController;
 use App\Http\Controllers\Frontend\NewArrivalsController;
 use App\Http\Controllers\Frontend\ViewAllController;
 use App\Http\Controllers\Frontend\CartController;
+use App\Http\Controllers\Frontend\CheckoutController;
+
 
 
 /*
@@ -124,3 +126,5 @@ Route::get('/new-arrivals',[NewArrivalsController::class,'index']);
 Route::get('/view-all',[ViewAllController::class,'index']);
 Route::get('/get-collection/{collectionId}',[CategoryController::class,'getCollecitonData'])->name('get.collection');
 Route::get('/cart', [CartController::class, 'index']);
+Route::get('/checkout', [CheckoutController::class, 'showCheckout'])->name('checkout.show');
+

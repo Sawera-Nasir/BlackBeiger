@@ -2,7 +2,7 @@
 @section('content')
 
 @extends('frontend.layouts.navbar')
-
+	
 	<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
 		<div class="carousel-inner">
 			@foreach($images as $index => $image)
@@ -252,6 +252,10 @@
 		</div>
 	</div>
 	</br>
+
+	<div class="preloader">
+		<div class="loader"></div>
+	</div>
 @endsection
 
 

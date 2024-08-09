@@ -101,6 +101,8 @@
         <a href="/cart" class="button btn-cart tc mt__10 mb__10 js_add_ld" tpi-atc-registered="true">
             <span class="truncate">View cart</span>
         </a>
-        <button type="submit" data-confirm="ck_lumise" name="checkout" class="button btn-checkout mt__10 mb__10 js_add_ld truncate" tpi-pao-registered="true">Check Out</button>
+        {{-- <button type="submit" data-confirm="ck_lumise" name="checkout" class="button btn-checkout mt__10 mb__10 js_add_ld truncate" tpi-pao-registered="true">Check Out</button> --}}
+        <a href="{{ route('checkout.show') }}" class="button btn-checkout mt__10 mb__10 js_add_ld truncate">Check Out</a>
+
     </div>
 </div>

@@ -1,5 +1,3 @@
-    
-
 	<div class="footer">
 		<div class="footer-container">
 			<div class="footer-column">
@@ -87,6 +85,27 @@
     <script src="{{asset('frontend/js/popper.js')}}"></script>
     <script src="{{asset('frontend/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('frontend/js/main.js')}}"></script>
+
+	{{-- <script>
+		document.querySelector("form").addEventListener("submit", function() {
+			document.getElementById("loader").style.display = "block";
+		});
+	</script>
+	<script>
+		$(document).ajaxStart(function() {
+			$("#loader").show();
+		}).ajaxStop(function() {
+			$("#loader").hide();
+		});
+	</script> --}}
+	<script>
+		$(function() {
+			$( "form" ).submit(function() {
+				$('#loader').show();
+			});
+		});
+		</script>
+	
 
   </body>
 </hmtl>
